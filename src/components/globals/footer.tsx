@@ -1,16 +1,16 @@
 export default function GlobalFooter() {
   return (
     <footer className="border-t border-t-border py-10 px-5 flex flex-col gap-3 w-full pb-25 items-center">
-      <ul className="grid grid-cols-2 md:grid-cols-4 py-4 w-full max-w-[1200px] px-5 mx-auto">
+      <ul className="grid grid-cols-2 md:grid-cols-4 py-4 w-full max-w-[1200px] px-5 mx-auto space-y-5">
         <li>
-          <h5>Products</h5>
+          <h5 className="font-semibold">Products</h5>
           <div className="my-3 flex flex-col text-sm text-secondary-foreground">
             <a href={"https://stella.arcadiasofts.com/"}>스텔라 런처</a>
             <a href={"https://stella.com/"}>스텔라 스토어</a>
           </div>
         </li>
         <li>
-          <h5>Resources</h5>
+          <h5 className="font-semibold">Resources</h5>
           <div className="my-3 flex flex-col text-sm text-secondary-foreground">
             <a href={"/"}>브랜드 리소스 센터</a>
             <a href={"https://arcadiasofts.com/policy/privacy"}>
@@ -19,7 +19,7 @@ export default function GlobalFooter() {
           </div>
         </li>
         <li>
-          <h5>Social</h5>
+          <h5 className="font-semibold">Social</h5>
           <div className="my-3 flex flex-col text-sm text-secondary-foreground">
             <a href={"https://discord.gg/GgUAvEVmak"}>아르카디아 커뮤니티</a>
           </div>
