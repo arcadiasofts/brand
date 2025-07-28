@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+
+const brands = await getCollection("brand");
+
+---
+<section class="px-3 md:px-10 max-w-[1200px] mx-auto">
+    <div class="border-t border-l border-r w-full h-full rounded-t-2xl flex justify-around overflow-hidden flex-col md:flex-row">
+        {
+            brands.map((brand)=>{
+                return (
+                    <a href={`brand/${brand.data.scheme}`} class="group w-full relative p-5 pb-14 flex flex-col items-center">
+                        <div class="absolute bg-black/80 w-full h-full left-0 top-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-400 ease-in-out">
+                            <h3 class="text-lg font-bold translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400 ease-in-out">클릭해서 이동하기</h3>
+                        </div>
+                        <img
+                            class="w-52 rounded-2xl"
+                            src={`/brands/${brand.data.scheme}/logo.png`}
+                            alt={`logo-${brand.data.scheme}`}
+                        />
+                        <p class="font-bold text-lg">{brand.data.title}</p>
+                    </a>
+                )
+            })
+        }
+    </div>
+</section>

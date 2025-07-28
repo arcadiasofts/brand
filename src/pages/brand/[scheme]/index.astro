@@ -1,0 +1,57 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { type GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry, render } from "astro:content";
+import { mdxComponents } from '@/components/mdx/mdx-components';
+
+export const getStaticPaths = (async () => {
+  const brands = await getCollection("brand");
+
+  return brands.map((brand) => {
+    return {
+      params: { scheme: brand.data.scheme },
+      props: { brand },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+type Props = {
+  brand: CollectionEntry<"brand">;
+};
+
+const { brand } = Astro.props;
+const { Content } = await render(brand);
+---
+
+<Layout title={brand.data.title}>
+  <main class="container mx-auto px-4 py-8 mb-10">
+    <div class="w-full h-40 rounded-md mb-[-3rem] font-bold flex justify-end uppercase items-end py-3 px-5" style={{backgroundColor: brand.data.color}}>
+      <p>{brand.data.color}</p>
+    </div>
+    <div class="px-4">
+      <img src={`/brands/${brand.data.scheme}/logo.png`} class="bg-background rounded-md p-3 select-none" width="100px"/>
+      <div class="flex justify-between items-start ">
+        <div class="space-y-2">
+          <h1 class="font-bold text-3xl">{brand.data.title} - 브랜드 정보</h1>
+          <p>{brand.data.description}</p>
+        </div>
+        <a 
+          href={`/brands/${brand.data.scheme}/package.zip`}
+          download
+          class="inline-block px-4 py-2 text-primary-foreground font-bold rounded-md hover:opacity-90 transition-opacity"
+          style={
+            {
+              backgroundColor: brand.data.color
+            }
+          }
+          >
+         브랜드 패키지
+        </a>
+      </div>
+      <div class="mt-10">
+        <Content 
+        components={mdxComponents} />
+      </div>
+    </div>
+  </main>
+</Layout>

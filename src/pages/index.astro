@@ -1,11 +1,108 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import {Ripple} from "@/components/magicui/ripple"
+import Menu from "@/components/section/home/menu.astro"
+// import WrongUsageCard from "@/components/ui/WrongUsageCard.astro"
+
+const wrongUsageData = [
+	{
+		imageSrc: "/wrong-usage/resize.png",
+		imageAlt: "wrong-resize",
+		warningText: "비율을 변경하지 말아주세요"
+	},
+	{
+		imageSrc: "/wrong-usage/background.png",
+		imageAlt: "wrong-background",
+		warningText: "배경으로 사용하지 말아주세요"
+	},
+	{
+		imageSrc: "/wrong-usage/change-color.png",
+		imageAlt: "wrong-color",
+		warningText: "색을 변경하지 말아주세요"
+	},
+	{
+		imageSrc: "/wrong-usage/too-small.png",
+		imageAlt: "wrong-image-size",
+		warningText: "해상도를 신경써주세요"
+	},
+	{
+		
+		imageSrc: "/wrong-usage/another-text.png",
+		imageAlt: "wrong-text-change",
+		warningText: "글자를 변경하지 마세요"
+	},
+	{
+		imageSrc: "/wrong-usage/persona.png",
+		imageAlt: "wrong-persona",
+		warningText: "의인화하지 마세요"
+	},
+	{
+		imageSrc: "/wrong-usage/visibility.png",
+		imageAlt: "wrong-visibility",
+		warningText: "가시성을 신경써주세요"
+	},
+	{
+		imageSrc: "/wrong-usage/line.png",
+		imageAlt: "wrong-line-usage",
+		warningText: "라인으로 사용하지 마세요"
+	}
+];
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<section class="py-20 relative z-10">
+		<h1 class="text-4xl text-center">
+			<span class="font-bold">아르카디아</span>의 모든 브랜드를<br/>
+			단 <span class="font-bold">하나의 공간</span>에서
+		</h1>
+		<Ripple client:load/>
+	</section>
+	<Menu/>
+	<section class="bg-secondary text-secondary-foreground text-center py-20 px-5 md:p-20">
+		<div class="max-w-[1200px] mx-auto">
+			<h3 class="text-2xl md:text-3xl font-bold mb-4">브랜드 아이덴티티 가이드라인</h3>
+			<div class="max-w-3xl mx-auto space-y-8">
+				<p class="pb-4 text-sm md:text-md">
+					아르카디아의 로고는 우리의 정체성을 대표하는 소중한 자산입니다.<br/>
+					올바른 사용을 통해 브랜드의 가치를 함께 만들어가요.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+					<div class="bg-secondary-foreground/10 p-6 rounded-lg">
+						<h4 class="text-xl font-semibold mb-3">최소 여백 준수</h4>
+						<p class="text-base">로고 주변에 충분한 여백을 확보하여 가독성과 품격을 유지해주세요.</p>
+					</div>
+					<div class="bg-secondary-foreground/10 p-6 rounded-lg">
+						<h4 class="text-xl font-semibold mb-3">색상 규정</h4>
+						<p class="text-base">지정된 브랜드 컬러를 준수하여 일관된 이미지를 전달해주세요.</p>
+					</div>
+					<div class="bg-secondary-foreground/10 p-6 rounded-lg">
+						<h4 class="text-xl font-semibold mb-3">변형 금지</h4>
+						<p class="text-base">로고의 형태나 비율을 임의로 변경하지 말아주세요.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- <section class="text-center py-20 px-5 md:p-20">
+		<div class="max-w-[1200px] mx-auto">
+			<h3 class="text-2xl md:text-3xl font-bold mb-4 ">잘못된 로고 사용의 예시</h3>
+			<p class="pb-4 text-sm md:text-md">
+				아래 보이는 이미지들은 브랜드 로고의 잘못된 사용 예시들입니다.<br/>
+				이는 저희의 모든 브랜드 로고 및 브랜딩 아이템에 적용됩니다.<br/>
+				아르카디아의 소중한 브랜드 이미지를 지켜주세요.
+			</p>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 rounded-md overflow-hidden bg-[#FF4F4F] gap-4 border-[#FF4F4F] border-t-8 border-b-8 md:border-8 md:gap-0">
+				{wrongUsageData.map((item) => (
+					<WrongUsageCard 
+						imageSrc={item.imageSrc}
+						imageAlt={item.imageAlt}
+						warningText={item.warningText}
+					/>
+				))}
+			</div>
+		</div>
+	</section> -->
 </Layout>
