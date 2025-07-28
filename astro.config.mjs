@@ -16,4 +16,5 @@ export default defineConfig({
       },
     },
   },
+  site: "https://brand.arcadiasofts.com/",
 });
